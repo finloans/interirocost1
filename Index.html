@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinLoans Estimated Home Interior Cost Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .calculator {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            border: 5px solid black;
+            background-color: #ffffe0;
+        }
+        .header, .tagline {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .header {
+            font-size: 26px;
+        }
+        .tagline {
+            font-size: 18px;
+            color: darkgreen;
+        }
+        .columns {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .column {
+            flex: 1;
+        }
+        .column select, .column input {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            font-weight: bold;
+        }
+        .green-solution {
+            color: green;
+            font-weight: bold;
+        }
+        .result {
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            border: 2px solid black;
+            color: red;
+        }
+        .result-box {
+            border: 2px solid green;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #e0ffe0;
+        }
+        .consent-text {
+            margin-top: 20px;
+            font-size: 14px;
+            color: gray;
+            font-weight: bold;
+        }
+        .details-box {
+            border: 3px solid black;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f0f8ff;
+        }
+        .details-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .details-box button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .details-box button:hover {
+            background-color: #45a049;
+        }
+        .hints {
+            font-size: 12px;
+            color: red;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2 class="header">FinLoans Estimated Home Interior Cost Calculator</h2>
+        <p class="tagline">FinLoans - Your Interior Partner in Your Dream Home Making</p>
+
+        <div class="columns">
+            <div class="column">
+                <h3>Calculate Based on FinLoans Rates:</h3>
+                <label for="district">Select District:</label>
+                <select id="district">
+                    <option value="">--Select District--</option>
+                    <option value="Bhubaneswar">Bhubaneswar</option>
+                    <option value="Cuttack">Cuttack</option>
+                    <option value="Dhenkanal">Dhenkanal</option>
+                    <option value="Anugul">Anugul</option>
+                    <option value="Rourkela">Rourkela</option>
+                    <option value="Sambalpur">Sambalpur</option>
+                    <option value="Balasore">Balasore</option>
+                    <option value="Berhampur">Berhampur</option>
+                    <option value="Puri">Puri</option>
+                    <option value="Koraput">Koraput</option>
+                </select>
+
+                <label for="propertyType">Select Property Type:</label>
+                <select id="propertyType">
+                    <option value="">--Select Property Type--</option>
+                    <option value="1BHK">1 BHK</option>
+                    <option value="2BHK">2 BHK</option>
+                    <option value="3BHK">3 BHK</option>
+                    <option value="4BHK">4 BHK</option>
+                    <option value="Duplex">Duplex</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Bungalow">Bungalow</option>
+                </select>
+
+                <label for="interiorSegment">Select Interior Segment:</label>
+                <select id="interiorSegment">
+                    <option value="">--Select Segment--</option>
+                    <option value="luxurious">Luxurious</option>
+                    <option value="highSegment">High Segment</option>
+                    <option value="middleSegment">Middle Segment</option>
+                    <option value="lowSegment">Low Segment</option>
+                </select>
+
+                <label for="sqft">Total Square Footage:</label>
+                <input type="number" id="sqft" placeholder="Enter total square footage">
+
+                <label for="greenSolution" class="green-solution">Green Solutions (Solar & Rain Water Harvesting):</label>
+                <select id="greenSolution">
+                    <option value="no">None</option>
+                    <option value="solar">Solar Power</option>
+                    <option value="rainWaterHarvesting">Rain Water Harvesting</option>
+                    <option value="both">Solar Power & Rain Water Harvesting</option>
+                </select>
+            </div>
+
+            <div class="column">
+                <h3>Manually Enter Your Rates:</h3>
+                <p class="hints">Fill all or put zero for not wanting to avail a feature</p>
+                <label for="manualFlooringRate">Flooring Rate (₹ per sqft):</label>
+                <input type="number" id="manualFlooringRate" placeholder="Enter your flooring rate">
+
+                <label for="manualFalseCeilingRate">False Ceiling Rate (₹ per sqft):</label>
+                <input type="number" id="manualFalseCeilingRate" placeholder="Enter your false ceiling rate">
+
+                <label for="manualWallPaintRate">Wall Paint Rate (₹ per sqft):</label>
+                <input type="number" id="manualWallPaintRate" placeholder="Enter your wall paint rate">
+
+                <label for="manualModularKitchenRate">Modular Kitchen Rate (₹ per sqft):</label>
+                <input type="number" id="manualModularKitchenRate" placeholder="Enter your modular kitchen rate">
+
+                <label for="manualBathroomRate">Bathroom Renovation Rate (₹ per sqft):</label>
+                <input type="number" id="manualBathroomRate" placeholder="Enter your bathroom renovation rate">
+
+                <label for="manualElectricalRate">Electrical & Lighting Rate (₹ per sqft):</label>
+                <input type="number" id="manualElectricalRate" placeholder="Enter your electrical rate">
+            </div>
+        </div>
+
+        <button onclick="calculateCost()">Calculate Cost</button>
+
+        <div class="result-box">
+            <h3>FinLoans Estimate:</h3>
+            <div class="result" id="finLoansResult"></div>
+        </div>
+
+        <div class="result-box">
+            <h3>Your Manual Estimate:</h3>
+            <div class="result" id="manualResult"></div>
+        </div>
+
+        <p class="tagline">The prices mentioned are for illustrative purposes only and may vary depending on the prevailing cost of raw materials.</p>
+
+        <div class="details-box">
+            <h3>Share Details to Get Best Rates</h3>
+            <form id="detailsForm" onsubmit="submitDetails(); return false;">
+                <input type="text" id="name" placeholder="Enter your name" required>
+                <input type="text" id="address" placeholder="Enter your address" required>
+                <input type="tel" id="mobile" placeholder="Enter your mobile number" required>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <p class="consent-text">
+                    I authorize FinLoans Services Pvt Ltd. and its business associates, partners, and/or affiliates to call, SMS, or email me in connection with my application or for offering other products and services, and I agree to the privacy policy and terms of use.
+                </p>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const districtRates = {
+            "Bhubaneswar": { flooring: 200, ceiling: 100, paint: 70, kitchen: 1200, bathroom: 850, electrical: 250 },
+            "Cuttack": { flooring: 180, ceiling: 95, paint: 65, kitchen: 1100, bathroom: 820, electrical: 230 },
+            "Dhenkanal": { flooring: 170, ceiling: 90, paint: 60, kitchen: 1050, bathroom: 800, electrical: 220 },
+            "Anugul": { flooring: 160, ceiling: 85, paint: 55, kitchen: 1000, bathroom: 780, electrical: 210 },
+            "Rourkela": { flooring: 190, ceiling: 98, paint: 68, kitchen: 1150, bathroom: 830, electrical: 240 },
+            "Sambalpur": { flooring: 175, ceiling: 95, paint: 60, kitchen: 1080, bathroom: 810, electrical: 225 },
+            "Balasore": { flooring: 180, ceiling: 90, paint: 62, kitchen: 1100, bathroom: 820, electrical: 230 },
+            "Berhampur": { flooring: 170, ceiling: 85, paint: 58, kitchen: 1000, bathroom: 780, electrical: 215 },
+            "Puri": { flooring: 190, ceiling: 100, paint: 70, kitchen: 1200, bathroom: 850, electrical: 250 },
+            "Koraput": { flooring: 160, ceiling: 80, paint: 55, kitchen: 1050, bathroom: 800, electrical: 210 }
+        };
+
+        function calculateCost() {
+            const district = document.getElementById('district').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const interiorSegment = document.getElementById('interiorSegment').value;
+            const sqft = parseFloat(document.getElementById('sqft').value);
+            const manualFlooringRate = parseFloat(document.getElementById('manualFlooringRate').value);
+            const manualCeilingRate = parseFloat(document.getElementById('manualFalseCeilingRate').value);
+            const manualPaintRate = parseFloat(document.getElementById('manualWallPaintRate').value);
+            const manualKitchenRate = parseFloat(document.getElementById('manualModularKitchenRate').value);
+            const manualBathroomRate = parseFloat(document.getElementById('manualBathroomRate').value);
+            const manualElectricalRate = parseFloat(document.getElementById('manualElectricalRate').value);
+            const greenSolution = document.getElementById('greenSolution').value;
+
+            if (!district || !propertyType || !interiorSegment || isNaN(sqft) || sqft <= 0) {
+                alert('Please fill all fields correctly.');
+                return;
+            }
+
+            // Percentage allocations for bathroom, ceiling, and modular kitchen
+            const bathroomPercentage = 0.1; // 10% of total sqft
+            const ceilingPercentage = 0.7; // 70% of total sqft
+            const kitchenPercentage = 0.15; // 15% of total sqft
+
+            // Wall painting for four walls
+            const wallPaintPercentage = 0.8; // Assume 80% of the square footage represents wall height per wall
+            const wallPaintAreaForOneWall = sqft * wallPaintPercentage;
+            const totalWallPaintArea = wallPaintAreaForOneWall * 4; // Four walls per room
+
+            const bathroomArea = sqft * bathroomPercentage;
+            const ceilingArea = sqft * ceilingPercentage;
+            const kitchenArea = sqft * kitchenPercentage;
+
+            // Adjust the rates based on the selected interior segment
+            let segmentMultiplier = 1;
+            if (interiorSegment === 'luxurious') segmentMultiplier = 1.5;
+            if (interiorSegment === 'highSegment') segmentMultiplier = 1.3;
+            if (interiorSegment === 'middleSegment') segmentMultiplier = 1.1;
+            if (interiorSegment === 'lowSegment') segmentMultiplier = 1;
+
+            const rates = districtRates[district];
+
+            // FinLoans calculations
+            const finLoansCost = (
+                (rates.flooring * segmentMultiplier * sqft) +
+                (rates.ceiling * segmentMultiplier * ceilingArea) +
+                (rates.paint * segmentMultiplier * totalWallPaintArea) +
+                (rates.kitchen * segmentMultiplier * kitchenArea) +
+                (rates.bathroom * segmentMultiplier * bathroomArea) +
+                (rates.electrical * segmentMultiplier * sqft)
+            );
+
+            // Manual calculations
+            const manualCost = (
+                (manualFlooringRate * sqft) +
+                (manualCeilingRate * ceilingArea) +
+                (manualPaintRate * totalWallPaintArea) +
+                (manualKitchenRate * kitchenArea) +
+                (manualBathroomRate * bathroomArea) +
+                (manualElectricalRate * sqft)
+            );
+
+            // Green solutions cost
+            let greenSolutionCost = 0;
+            if (greenSolution === 'solar') greenSolutionCost = 300 * sqft;
+            if (greenSolution === 'rainWaterHarvesting') greenSolutionCost = 200 * sqft;
+            if (greenSolution === 'both') greenSolutionCost = 500 * sqft;
+
+            const totalFinLoansCost = finLoansCost + greenSolutionCost;
+            const totalManualCost = manualCost + greenSolutionCost;
+
+            // Update the result box with the estimates and the sizes
+            document.getElementById('finLoansResult').innerHTML = `
+                <p>Total Cost: ₹${totalFinLoansCost.toLocaleString()}</p>
+                <p>Price per sqft: Flooring - ₹${(rates.flooring * segmentMultiplier).toFixed(2)}, Ceiling - ₹${(rates.ceiling * segmentMultiplier).toFixed(2)}, Wall Paint - ₹${(rates.paint * segmentMultiplier).toFixed(2)}, Modular Kitchen - ₹${(rates.kitchen * segmentMultiplier).toFixed(2)}, Bathroom - ₹${(rates.bathroom * segmentMultiplier).toFixed(2)}, Electrical - ₹${(rates.electrical * segmentMultiplier).toFixed(2)}</p>
+                <p>Ideal Sizes: Wall Area (per wall) - ${wallPaintAreaForOneWall.toFixed(2)} sqft, Total Wall Paint Area (4 walls) - ${totalWallPaintArea.toFixed(2)} sqft, Ceiling Area - ${ceilingArea.toFixed(2)} sqft, Kitchen Area - ${kitchenArea.toFixed(2)} sqft, Bathroom Area - ${bathroomArea.toFixed(2)} sqft</p>
+            `;
+
+            document.getElementById('manualResult').innerHTML = `
+                <p>Total Cost: ₹${totalManualCost.toLocaleString()}</p>
+                <p>Manual Input Prices</p>
+                <p>Ideal Sizes: Wall Area (per wall) - ${wallPaintAreaForOneWall.toFixed(2)} sqft, Total Wall Paint Area (4 walls) - ${totalWallPaintArea.toFixed(2)} sqft, Ceiling Area - ${ceilingArea.toFixed(2)} sqft, Kitchen Area - ${kitchenArea.toFixed(2)} sqft, Bathroom Area - ${bathroomArea.toFixed(2)} sqft</p>
+            `;
+        }
+
+        // Function to submit form details to Google Sheets
+        function submitDetails() {
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const mobile = document.getElementById('mobile').value;
+            const email = document.getElementById('email').value;
+
+            if (!name || !address || !mobile || !email) {
+                alert('Please fill all the fields in the form.');
+                return;
+            }
+
+            // Create form data for Google Sheets submission
+            const formData = new FormData();
+            formData.append('Name', name);
+            formData.append('Address', address);
+            formData.append('Mobile', mobile);
+            formData.append('Email', email);
+
+            // Fetch API request to send form data to Google Sheets (https://script.google.com/macros/s/AKfycbyqxBc2e9__l6SlbyJ8_iJep9NheB_voYLkWnB8hK0k1czyq6_eoQfEEpxLnAUrCt5V/exec)
+            fetch('https://script.google.com/macros/s/AKfycbyqxBc2e9__l6SlbyJ8_iJep9NheB_voYLkWnB8hK0k1czyq6_eoQfEEpxLnAUrCt5V/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert('Your details have been submitted successfully.');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your details. Please try again.');
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
